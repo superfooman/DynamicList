@@ -6,11 +6,11 @@
 int main(void)
 {
 	list ls;
-	list another_ls;
+	list second_ls;
 	list last_ls;
 	
 	list_init(&ls);
-	list_init(&another_ls);
+	list_init(&second_ls);
 	list_init(&last_ls);
 
 	list_add(&ls, "Hello");
@@ -24,12 +24,12 @@ int main(void)
 	}
 	printf("\nMakes two copies, one shadow copy, and another one deep copy\n");
 
-	list_copy(&ls, &another_ls);
+	list_copy(&ls, &second_ls);
 	list_deep_copy(&ls, &last_ls);
 
-	for (int i = 0; i < list_count(&another_ls); i++)
+	for (int i = 0; i < list_count(&second_ls); i++)
 	{
-		printf("%s ", (char*)list_find(&another_ls, i));
+		printf("%s ", (char*)list_find(&second_ls, i));
 	}
 	printf("\n");
 
@@ -39,7 +39,7 @@ int main(void)
 	}
 	printf("\nReplace a new word for the shadow copy list\n");
 
-	list_replace(&another_ls, 0, "Hi");
+	list_replace(&second_ls, 0, "Hi");
 
 	for (int i = 0; i < list_count(&ls); i++)
 	{
@@ -47,9 +47,9 @@ int main(void)
 	}
 	printf("\n");
 
-	for (int i = 0; i < list_count(&another_ls); i++)
+	for (int i = 0; i < list_count(&second_ls); i++)
 	{
-		printf("%s ", (char*)list_find(&another_ls, i));
+		printf("%s ", (char*)list_find(&second_ls, i));
 	}
 	printf("\n");
 
@@ -67,9 +67,9 @@ int main(void)
 	}
 	printf("\n");
 
-	for (int i = 0; i < list_count(&another_ls); i++)
+	for (int i = 0; i < list_count(&second_ls); i++)
 	{
-		printf("%s ", (char*)list_find(&another_ls, i));
+		printf("%s ", (char*)list_find(&second_ls, i));
 	}
 	printf("\n");
 
