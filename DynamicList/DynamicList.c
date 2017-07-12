@@ -55,6 +55,23 @@ void list_deep_copy(list* ls, list* another_ls)
 	another_ls->capacity = ls->capacity;
 }
 
+void list_insert(list* ls, int index, void* item)
+{
+	if (index < 0 || index > ls->count)
+		return;
+
+	if (ls->count == ls->capacity)
+		list_resize(ls, ls->capacity * 2);
+	
+	ls->count++;
+	for (int i = ls->count-1, j = ls->count-2; i > index; i--)
+	{
+		ls->items[i] = ls->items[j];
+		j--;
+	}
+	ls->items[index] = item;
+}
+
 void* list_find(list* ls, int index)
 {
 	if (index >= 0 && index < ls->count)
@@ -69,9 +86,28 @@ void list_replace(list* ls, int index, void* item)
 
 }
 
+void list_remove(list* ls, int index)
+{
+	if (index < 0 || index >= ls->count)
+		return;
+
+	for (int i = index + 1, j = index; i <= ls->count; i++)
+	{
+		ls->items[j] = ls->items[i];
+		j++;
+	}
+	ls->items[ls->count--] = NULL;
+}
+
 void list_free(list* ls)
 {
 	free(ls->items);
+}
+
+void list_clear(list* ls)
+{
+	list_free(ls);
+	list_init(ls);
 }
 
 
