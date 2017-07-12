@@ -1,4 +1,4 @@
-# Dynamic List
+# Dynamic List (Vector)
 Dynamic List (Vector) in C programming
 
 The goal is to create a simple list which behaves like a dynamic array in other languages.
